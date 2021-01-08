@@ -1,0 +1,33 @@
+.home-container {
+  width: 100%;
+  height: 100%;
+  background: url("../../../assets/images/home-background.png");
+
+  .title-container {
+    width: 40%;
+    height: 40%;
+    background-color: #359ffc;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    .title {
+      color: #fff;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+  .table {
+    width: 100%;
+    .table-component {
+      width: 80%;
+      background-color: #fff;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+    .table-header {
+      background-color: #e2e2e2;
+      width: 80%;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+  }
+}
