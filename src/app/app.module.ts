@@ -24,8 +24,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './components/home/home.component';
 import { TableComponent } from './components/table/table.component';
 import { FormDialogComponent } from './components/form-dialog/form.dialog.component';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartDialogComponent } from './components/chart-dialog/chart.dialog.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     TableComponent,
     FormDialogComponent,
+    ChartDialogComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -54,9 +57,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    ChartsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [MatDatepickerModule],
+  providers: [
+    MatDatepickerModule,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

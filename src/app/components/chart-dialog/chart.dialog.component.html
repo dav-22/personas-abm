@@ -1,0 +1,39 @@
+<div class="chart-container" fxLayout="column">
+  <!-- header -->
+  <div
+    class="chart-header"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    fxFlex="20"
+  >
+    <span class="chart-title">Grafico por país</span>
+    <div class="chart-icon" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </div>
+  </div>
+
+  <!-- body -->
+  <div
+    mat-dialog-content
+    fxFlex="60"
+    fxLayout="column"
+    class="chart-content"
+    fxLayoutAlign="center center"
+  >
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="labels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+    >
+    </canvas>
+  </div>
+
+  <!-- footer -->
+  <div fxFlex="20" fxLayoutAlign="space-evenly center">
+    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+  </div>
+</div>

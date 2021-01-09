@@ -10,6 +10,7 @@ import { Persona } from '../../models/persona.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../form-dialog/form.dialog.component';
+import { ChartDialogComponent } from '../chart-dialog/chart.dialog.component';
 import { Subject } from 'rxjs/internal/Subject';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -28,6 +29,7 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
     private personaService: PersonaService,
     private spinner: NgxSpinnerService,
     private dialog: MatDialog,
+    private chartDialog: MatDialog,
     private _snackBar: MatSnackBar
   ) {
     this.row = '';
@@ -80,6 +82,16 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
       width: '550px',
       data: {
         rowId: this.row,
+      },
+    });
+  }
+
+  openchartDialog() {
+    this.dialog.open(ChartDialogComponent, {
+      height: '500px',
+      width: '550px',
+      data: {
+        personas: this.personas,
       },
     });
   }
