@@ -1,78 +1,140 @@
-<div class="table-container" fxLayoutAlign="center center">
-  <!-- <span>asd</span> -->
-  <ngx-datatable
-    class="material"
-    [rows]="rows"
-    [columns]="columns"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    rowHeight="auto"
-    [limit]="3"
-  >
-    <ngx-datatable-column
-      prop="name"
-      name="Nombre"
-      [flexGrow]="4"
-      [sortable]="true"
-    >
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span>{{ value ? value : "-" }} </span>
-      </ng-template>
-    </ngx-datatable-column>
+<div class="table-container" fxLayoutAlign="center center" fxLayout="column">
+  <ngx-spinner></ngx-spinner>
+  <div class="table-header" fxLayoutAlign="space-around center" fxFlex="20">
+    <div fxFlex="30" fxLayoutAlign="center center">
+      <h2>Lista de Personas</h2>
+    </div>
+    <div fxLayoutAlign="space-around center" fxFlex="30">
+      <button mat-raised-button color="primary" (click)="openDialog('0')">
+        Agregar persona
+      </button>
+      <button mat-raised-button color="primary">Grafico por país</button>
+    </div>
+  </div>
 
-    <ngx-datatable-column
-      prop="name"
-      name="Nombre"
-      [flexGrow]="4"
-      [sortable]="true"
+  <div class="table-c" fxFlex="50">
+    <ngx-datatable
+      class="material"
+      [rows]="personas"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [limit]="3"
     >
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span>{{ value ? value : "-" }} </span>
-      </ng-template>
-    </ngx-datatable-column>
+      <ngx-datatable-column
+        prop="nombre"
+        name="Nombre"
+        [flexGrow]="1"
+        [sortable]="true"
+      >
+        <ng-template
+          ngx-datatable-cell-template
+          let-row="row"
+          let-value="value"
+        >
+          <span>{{ value ? value : "-" }} </span>
+        </ng-template>
+      </ngx-datatable-column>
 
-    <ngx-datatable-column
-      prop="name"
-      name="Nombre"
-      [flexGrow]="4"
-      [sortable]="true"
-    >
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span>{{ value ? value : "-" }} </span>
-      </ng-template>
-    </ngx-datatable-column>
+      <ngx-datatable-column
+        prop="apellido"
+        name="Apellido"
+        [flexGrow]="1"
+        [sortable]="true"
+      >
+        <ng-template
+          ngx-datatable-cell-template
+          let-row="row"
+          let-value="value"
+        >
+          <span>{{ value ? value : "-" }} </span>
+        </ng-template>
+      </ngx-datatable-column>
 
-    <ngx-datatable-column
-      prop="name"
-      name="Nombre"
-      [flexGrow]="4"
-      [sortable]="true"
-    >
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span>{{ value ? value : "-" }} </span>
-      </ng-template>
-    </ngx-datatable-column>
+      <ngx-datatable-column
+        prop="fnac"
+        name="Fecha de nacimiento"
+        [flexGrow]="1"
+        [sortable]="true"
+      >
+        <ng-template
+          ngx-datatable-cell-template
+          let-row="row"
+          let-value="value"
+        >
+          <span>{{ value.toDate() | date: "dd-MM-yyyy" }}</span>
+        </ng-template>
+      </ngx-datatable-column>
 
-    <ngx-datatable-column
-      prop="name"
-      name="Nombre"
-      [flexGrow]="4"
-      [sortable]="true"
-    >
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span>{{ value ? value : "-" }} </span>
-      </ng-template>
-    </ngx-datatable-column>
+      <ngx-datatable-column
+        prop="direccion"
+        name="Dirección"
+        [flexGrow]="1"
+        [sortable]="true"
+      >
+        <ng-template
+          ngx-datatable-cell-template
+          let-row="row"
+          let-value="value"
+        >
+          <span>{{ value ? value : "-" }} </span>
+        </ng-template>
+      </ngx-datatable-column>
 
-    <ngx-datatable-column
-      prop="name"
-      name="Nombre"
-      [flexGrow]="4"
-      [sortable]="true"
-    >
-      <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-        <span>{{ value ? value : "-" }} </span>
-      </ng-template>
-    </ngx-datatable-column>
-  </ngx-datatable>
+      <ngx-datatable-column
+        prop="telefono"
+        name="Telefono"
+        [flexGrow]="1"
+        [sortable]="true"
+      >
+        <ng-template
+          ngx-datatable-cell-template
+          let-row="row"
+          let-value="value"
+        >
+          <span>{{ value ? value : "-" }} </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        prop="pais"
+        name="País"
+        [flexGrow]="1"
+        [sortable]="true"
+      >
+        <ng-template
+          ngx-datatable-cell-template
+          let-row="row"
+          let-value="value"
+        >
+          <span>{{ value ? value : "-" }} </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column [flexGrow]="0.5">
+        <ng-template ngx-datatable-header-template> </ng-template>
+        <ng-template
+          ngx-datatable-cell-template
+          let-row="row"
+          let-value="value"
+        >
+          <button mat-button [matMenuTriggerFor]="actionsMenu">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-icon>more_vert</mat-icon>
+            </div>
+          </button>
+          <mat-menu #actionsMenu="matMenu">
+            <button mat-menu-item (click)="openDialog(row.id)">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item (click)="deletePersona(row.id)">
+              <mat-icon>delete</mat-icon>
+              <span>Eliminar</span>
+            </button>
+          </mat-menu>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
 </div>

@@ -1,0 +1,101 @@
+<div class="dialog-container" fxLayout="column">
+  <!-- header -->
+  <div
+    class="dialog-header"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    fxFlex="20"
+  >
+    <span class="title" *ngIf="data.rowId == '0'">Agregar persona</span>
+    <span class="title" *ngIf="data.rowId != '0'">Editar persona</span>
+    <div class="icon" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </div>
+  </div>
+
+  <!-- body -->
+  <div
+    mat-dialog-content
+    fxFlex="60"
+    fxLayout="column"
+    class="dialog-content"
+    fxLayoutAlign="center center"
+    [formGroup]="formGroup"
+  >
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="form-input">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Nombre"
+          formControlName="nombre"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Apellido"
+          formControlName="apellido"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="form-input">
+      <mat-form-field>
+        <mat-label>Telefono</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Telefono"
+          formControlName="telefono"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Dirección</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Dirección"
+          formControlName="direccion"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" class="form-input">
+      <mat-form-field color="accent" appearance="fill">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="fnac" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>País</mat-label>
+        <mat-select formControlName="pais">
+          <mat-option *ngFor="let pais of paises" [value]="pais.nombre">{{
+            pais.nombre
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div fxFlex="20" fxLayoutAlign="space-evenly center">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="formGroup.invalid"
+      (click)="addOrEditPersona()"
+    >
+      Aceptar
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
+  </div>
+</div>

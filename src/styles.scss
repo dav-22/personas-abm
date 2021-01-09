@@ -13,3 +13,16 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.ngx-datatable.material
+  .datatable-body
+  .datatable-body-row
+  .datatable-body-cell {
+  text-align: center;
+}
+.ngx-datatable
+  .datatable-header
+  .datatable-header-cell
+  .datatable-header-cell-template-wrap {
+  text-align: center;
+}
